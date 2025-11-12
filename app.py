@@ -32,7 +32,7 @@ def video(id):
         metadata = get_video_metadata(video["url"])
         return render_template("video.html", video=video, metadata=metadata)
 
-    return "bad request!", 400
+    return render_template("error.html", code="400", message="Bad Request")
 
 
 @app.route("/videos/add", methods=["POST", "GET"])
