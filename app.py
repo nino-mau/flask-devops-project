@@ -50,3 +50,7 @@ def add_video():
     return render_template("videos-add.html")
 
 
+@app.route("/videos/delete/<string:id>", methods=["POST"])
+def delete_video(id):
+    Video.delete(id)
+    return redirect(url_for("home"))
