@@ -1,13 +1,10 @@
 import os
-import json
-import uuid
-from flask import Flask
-from flask import render_template
-from flask import request, flash, redirect, url_for
+
 from dotenv import load_dotenv
+from flask import Flask, flash, redirect, render_template, request, url_for
 
 from service.video import Video
-from utils import get_video_metadata, load_data, save_data, url_to_embed
+from utils import get_video_metadata, load_data, url_to_embed
 
 load_dotenv()
 
