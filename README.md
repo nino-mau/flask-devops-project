@@ -2,6 +2,19 @@
 
 ## Getting started
 
+Set up virtual env:
+
+```bash
+python3 -m venv .venv
+./venv/bin/activate
+```
+
+Install dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
 Start the application:
 
 ```bash
