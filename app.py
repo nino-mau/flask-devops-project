@@ -1,8 +1,12 @@
 import os
 import json
+import uuid
 from flask import Flask
 from flask import render_template
+from flask import request, flash, redirect, url_for
 from dotenv import load_dotenv
+
+from utils import save_data
 
 load_dotenv()
 
@@ -17,3 +21,22 @@ with open("./videos.json", "r") as f:
 @app.route('/')
 def home():
     return render_template('home.html')
+
+@app.route('/videos/add', methods=['POST', 'GET'])
+def videos_add():
+    if request.method == 'POST':
+        title = request.form['title']
+        url = request.form['url']
+
+        app.logger.info('%s title: ', title)
+        app.logger.info('%s url: ', url)
+
+        if not title:
+            flash('Title is required!')
+        elif not url:
+            flash('Content is required!')
+        else:
+            videos_data.append({'id': str(uuid.uuid4()), 'title': title, 'url': url})
+            save_data(videos_data);
+            return redirect(url_for('home'))
+    return render_template('videos-add.html')
