@@ -28,7 +28,6 @@ Helper to get metadata of a video, return a dict
 
 
 def get_video_metadata(url):
-    # url = embed_to_url(url)
     try:
         with yt_dlp.YoutubeDL(
             params={"quiet": True, "no_warnings": True, "extract_flat": False}
