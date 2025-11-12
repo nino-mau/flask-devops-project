@@ -36,22 +36,14 @@ def videos_add():
             flash('Content is required!')
         else:
             videos_data.append({'id': str(uuid.uuid4()), 'title': title, 'url': url})
-            save_data(videos_data);
+            save_data(videos_data)
             return redirect(url_for('home'))
     return render_template('videos-add.html')
 
 
 @app.route('/videos', methods=['GET'])
 def videos():
-    ytb_prefix = 'https://www.youtube.com/embed/'
-
-    #Temp
-    urls = ['Rof660OEA3E', 'yakOBIoyoik', '56K5mhMf0ww', 'nBHv7wYOi3I']
-    #Temp
-
-    urls = [ytb_prefix + url for url in urls]
-    print(urls)
-    return render_template('videos.html', urls=urls)
+    return render_template('videos.html', videos_data=videos_data)
 
 if __name__ == "__main__":
     app.run(debug=True)
