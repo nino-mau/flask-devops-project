@@ -53,17 +53,19 @@ def add_video():
             return redirect(url_for("home"))
     return render_template("videos-add.html")
 
-@app.route('/videos', methods=['GET'])
-def videos():
-    ytb_prefix = 'https://www.youtube.com/embed/'
 
-    #Temp
-    urls = ['Rof660OEA3E', 'yakOBIoyoik', '56K5mhMf0ww', 'nBHv7wYOi3I']
-    #Temp
+@app.route("/videos", methods=["GET"])
+def videos():
+    ytb_prefix = "https://www.youtube.com/embed/"
+
+    # Temp
+    urls = ["Rof660OEA3E", "yakOBIoyoik", "56K5mhMf0ww", "nBHv7wYOi3I"]
+    # Temp
 
     urls = [ytb_prefix + url for url in urls]
     print(urls)
-    return render_template('videos.html', urls=urls)
+    return render_template("videos.html", urls=urls)
+
 
 @app.route("/videos/delete/<string:id>", methods=["POST"])
 def delete_video(id):
