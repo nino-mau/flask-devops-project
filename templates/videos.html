@@ -1,12 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vidéos</title>
-</head>
-<body>
-    
+{% extends "base-layout.html" %}
+
+{% block content %}
+<h1>Videos List</h1>
   <ul class="videos-list">
     {% for url in urls %}
         <li>
@@ -21,7 +16,5 @@
             </iframe>
         </li>
     {% endfor %}
-  </ul>
-
-</body>
-</html>
+    </ul>
+{% endblock %}

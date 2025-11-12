@@ -40,6 +40,7 @@ def videos_add():
             return redirect(url_for('home'))
     return render_template('videos-add.html')
 
+
 @app.route('/videos', methods=['GET'])
 def videos():
     ytb_prefix = 'https://www.youtube.com/embed/watch?v='
