@@ -43,16 +43,15 @@ def videos_add():
 
 @app.route('/videos', methods=['GET'])
 def videos():
-    ytb_prefix = 'https://www.youtube.com/embed/watch?v='
+    ytb_prefix = 'https://www.youtube.com/embed/'
 
     #Temp
-    urls = ['Rof660OEA3E', 'yakOBIoyoik']
+    urls = ['Rof660OEA3E', 'yakOBIoyoik', '56K5mhMf0ww', 'nBHv7wYOi3I']
     #Temp
 
     urls = [ytb_prefix + url for url in urls]
     print(urls)
     return render_template('videos.html', urls=urls)
 
-app.run(debug=True)
 if __name__ == "__main__":
-    app.run
+    app.run(debug=True)

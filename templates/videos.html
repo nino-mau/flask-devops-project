@@ -1,20 +1,25 @@
 {% extends "base-layout.html" %}
 
 {% block content %}
-<h1>Videos List</h1>
-  <ul class="videos-list">
+<h1>Videos List :</h1>
+  <div class="videos-list">
     {% for url in urls %}
-        <li>
-            <iframe 
-            src="{{ url }}" 
-            width="560" height="315" 
-            title="YouTube video player" 
-            frameborder="0" 
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-            referrerpolicy="strict-origin-when-cross-origin" 
-            allowfullscreen>
-            </iframe>
-        </li>
+        <iframe 
+        src="{{ url }}" 
+        width="33%" height="315" 
+        title="YouTube video player" 
+        frameborder="0" 
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+        referrerpolicy="strict-origin-when-cross-origin" 
+        allowfullscreen>
+        </iframe>
     {% endfor %}
-    </ul>
+  </div>
+
+<style>
+.videos-list div {
+  width:33%;
+  float:left;
+}
+</style>
 {% endblock %}
