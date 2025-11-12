@@ -6,7 +6,7 @@ from flask import render_template
 from flask import request, flash, redirect, url_for
 from dotenv import load_dotenv
 
-from utils import save_data
+from utils import load_data, save_data
 
 load_dotenv()
 
@@ -15,8 +15,7 @@ app = Flask(__name__)
 app.config["SECRET_KEY"] = os.getenv('SECRET_KEY') 
 
 # Load videos data from json
-with open("./videos.json", "r") as f:
-    videos_data = json.load(f)
+videos_data = load_data()
 
 @app.route('/')
 def home():
