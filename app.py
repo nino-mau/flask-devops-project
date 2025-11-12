@@ -7,7 +7,7 @@ from flask import request, flash, redirect, url_for
 from dotenv import load_dotenv
 
 from service.video import Video
-from utils import load_data, save_data
+from utils import get_video_metadata, load_data, save_data, url_to_embed
 
 load_dotenv()
 
@@ -27,14 +27,19 @@ def home():
 @app.route("/videos/<string:id>")
 def video(id):
     video = Video.get(id)
-    return render_template("video.html", video=video)
+
+    if video:
+        metadata = get_video_metadata(video["url"])
+        return render_template("video.html", video=video, metadata=metadata)
+
+    return "bad request!", 400
 
 
 @app.route("/videos/add", methods=["POST", "GET"])
 def add_video():
     if request.method == "POST":
         title = request.form["title"]
-        url = request.form["url"]
+        url = url_to_embed(request.form["url"])
 
         app.logger.info("%s title: ", title)
         app.logger.info("%s url: ", url)
@@ -44,8 +49,7 @@ def add_video():
         elif not url:
             flash("Content is required!")
         else:
-            videos_data.append({"id": str(uuid.uuid4()), "title": title, "url": url})
-            save_data(videos_data)
+            Video.add(title, url)
             return redirect(url_for("home"))
     return render_template("videos-add.html")
 
@@ -65,6 +69,7 @@ def videos():
 def delete_video(id):
     Video.delete(id)
     return redirect(url_for("home"))
+
 
 if __name__ == "__main__":
     app.run(debug=True)
