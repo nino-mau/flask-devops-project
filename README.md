@@ -35,4 +35,5 @@ To run the unit tests:
 
 ```bash
 python3 test_utils.py
+python3 test_video.py
 ```
