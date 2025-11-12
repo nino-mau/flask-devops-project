@@ -20,6 +20,12 @@ videos_data = load_data()
 @app.route('/')
 def home():
     return render_template('home.html')
+  
+@app.route('/videos', methods=['GET'])
+def videos():
+    urls = ['https://www.youtube.com/embed/watch?v=Rof660OEA3E', 
+            'https://www.youtube.com/embed/watch?v=yakOBIoyoik']
+    return render_template('videos.html', urls=urls)
 
 @app.route('/videos/add', methods=['POST', 'GET'])
 def videos_add():
