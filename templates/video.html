@@ -1,0 +1,12 @@
+{% extends "base-layout.html" %}
+{% block content %}
+<div class="d-flex flex-column justify-content-center align-items-center gap-4 pt-5">
+  <h2>{{ video.title }}</h2>
+  <iframe width="800" height="500" src="{{ video.url }}" frameborder="0"></iframe>
+  <div>
+    <form method="post" action="{{ url_for('delete_video', id=video.id) }}">
+      <button type="submit" class="btn btn-danger">Delete</button>
+    </form>
+  </div>
+</div>
+{% endblock %}

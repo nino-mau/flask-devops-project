@@ -6,36 +6,47 @@ from flask import render_template
 from flask import request, flash, redirect, url_for
 from dotenv import load_dotenv
 
+from service.video import Video
 from utils import load_data, save_data
 
 load_dotenv()
 
 app = Flask(__name__)
 
-app.config["SECRET_KEY"] = os.getenv('SECRET_KEY') 
+app.config["SECRET_KEY"] = os.getenv("SECRET_KEY")
 
 # Load videos data from json
 videos_data = load_data()
 
-@app.route('/')
+
+@app.route("/")
 def home():
-    return render_template('home.html')
+    return render_template("home.html")
 
-@app.route('/videos/add', methods=['POST', 'GET'])
-def videos_add():
-    if request.method == 'POST':
-        title = request.form['title']
-        url = request.form['url']
 
-        app.logger.info('%s title: ', title)
-        app.logger.info('%s url: ', url)
+@app.route("/videos/<string:id>")
+def video(id):
+    video = Video.get(id)
+    return render_template("video.html", video=video)
+
+
+@app.route("/videos/add", methods=["POST", "GET"])
+def add_video():
+    if request.method == "POST":
+        title = request.form["title"]
+        url = request.form["url"]
+
+        app.logger.info("%s title: ", title)
+        app.logger.info("%s url: ", url)
 
         if not title:
-            flash('Title is required!')
+            flash("Title is required!")
         elif not url:
-            flash('Content is required!')
+            flash("Content is required!")
         else:
-            videos_data.append({'id': str(uuid.uuid4()), 'title': title, 'url': url})
-            save_data(videos_data);
-            return redirect(url_for('home'))
-    return render_template('videos-add.html')
+            videos_data.append({"id": str(uuid.uuid4()), "title": title, "url": url})
+            save_data(videos_data)
+            return redirect(url_for("home"))
+    return render_template("videos-add.html")
+
+
