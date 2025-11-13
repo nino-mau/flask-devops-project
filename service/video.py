@@ -26,6 +26,21 @@ class Video:
         return None
 
     """
+    Update a video by it's id
+    """
+
+    @staticmethod
+    def update(id, title, url):
+        videos = load_data()
+        for i in range(len(videos)):
+            video = videos[i]
+            if video["id"] == id:
+                video["title"] = title
+                video["url"] = url
+                save_data(videos)
+                break
+
+    """
     Delete a video by it's id
     """
 
