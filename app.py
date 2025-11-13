@@ -53,7 +53,8 @@ def add_video():
 
 @app.route("/videos", methods=["GET"])
 def videos():
-    return render_template("videos.html", videos_data=videos_data)
+    videos = load_data()
+    return render_template("videos.html", videos_data=videos)
 
 
 @app.route("/videos/delete/<string:id>", methods=["POST"])
