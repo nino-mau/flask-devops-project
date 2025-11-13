@@ -1,7 +1,10 @@
 flask
+yt-dlp
 flask-cors
 python-dotenv
 gunicorn
 psycopg2-binary
 requests
 flask[async]
+pytest
+pytest-cov
