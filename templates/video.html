@@ -7,10 +7,13 @@
     <p>Author: {{ metadata.author }}</p>
   </div>
   <iframe width="800" height="500" src="{{ video.url }}" frameborder="0"></iframe>
-  <div>
+  <div class="d-flex flex-row gap-4">
     <form method="post" action="{{ url_for('delete_video', id=video.id) }}">
       <button type="submit" class="btn btn-danger">Delete</button>
     </form>
+    <a href="{{ url_for('update_video', id=video.id) }}">
+      <button type="submit" class="btn btn-primary">Edit</button>
+    </a>
   </div>
 </div>
 {% endblock %}

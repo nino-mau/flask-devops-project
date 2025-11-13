@@ -70,5 +70,27 @@ def delete_video(id):
     return redirect(url_for("home"))
 
 
+@app.route("/videos/update/<string:id>", methods=["POST", "GET"])
+def update_video(id):
+    video = Video.get(id)
+
+    if not video:
+        return render_template("error.html", code="400", message="Bad Request")
+
+    if request.method == "POST":
+        title = request.form["title"]
+        url = url_to_embed(request.form["url"])
+
+        if not title:
+            flash("Title is required!")
+        elif not url:
+            flash("Content is required!")
+        else:
+            Video.update(id, title, url)
+            return redirect(url_for("video", id=id))
+
+    return render_template("video-update.html", defaults=video)
+
+
 if __name__ == "__main__":
     app.run(debug=True)

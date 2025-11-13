@@ -1,0 +1,16 @@
+{% extends "base-layout.html" %}
+{% block content %}
+<form method="post">
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Title</label>
+    <input type="text" name="title" class="form-control" id="exampleInputEmail1"
+      value="{{ request.form.get('title', defaults.title) }}" aria-describedby="emailHelp">
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Url</label>
+    <input type="url" name="url" class="form-control" id="exampleInputEmail1"
+      value="{{ request.form.get('url', defaults.url) }}" aria-describedby="emailHelp">
+  </div>
+  <button type="submit" class="btn btn-primary">Update Video</button>
+</form>
+{% endblock %}
