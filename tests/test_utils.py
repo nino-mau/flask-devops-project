@@ -1,7 +1,7 @@
 import json
 import pytest
 from unittest.mock import patch, mock_open
-from utils import load_data, save_data
+from utils import get_video_metadata, load_data, save_data
 
 
 class TestUtils:
@@ -87,3 +87,12 @@ class TestUtils:
 
             handle = mock_file()
             handle.write.assert_called_once_with(expected_json)
+
+    def test_get_video_metadata(self):
+        """Test video metadata helper"""
+        test_url = "https://youtube.com/embed/yakOBIoyoik"
+        metadata = get_video_metadata(test_url)
+
+        assert metadata is not None
+        assert metadata["views"] is not None
+        assert metadata["author"] is not None
