@@ -1,2 +1,6 @@
-html {
-}
+html {}
+
+/* VIDEOS.HTML */
+.videos-list {display: flex; flex-wrap: wrap; gap: 5px; justify-content: space-between;}
+.video-item {width: 32%; box-sizing: border-box;}
+.video-item b {display: block; margin-bottom: 5px; text-align: center;}

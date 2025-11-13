@@ -2,24 +2,20 @@
 
 {% block content %}
 <h1>Videos List :</h1>
-  <div class="videos-list">
-    {% for url in urls %}
-        <iframe 
-        src="{{ url }}" 
-        width="33%" height="315" 
-        title="YouTube video player" 
-        frameborder="0" 
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-        referrerpolicy="strict-origin-when-cross-origin" 
+<div class="videos-list">
+  {% for video_data in videos_data %}
+    <div class="video-item">
+      <b>{{ video_data['title'] }}</b>
+      <iframe 
+        src="{{ video_data['url'] }}" 
+        width="100%" height="315"
+        title="YouTube video player"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin"
         allowfullscreen>
-        </iframe>
-    {% endfor %}
-  </div>
-
-<style>
-.videos-list div {
-  width:33%;
-  float:left;
-}
-</style>
+      </iframe>
+    </div>
+  {% endfor %}
+</div>
 {% endblock %}
