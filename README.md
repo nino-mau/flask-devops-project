@@ -34,12 +34,5 @@ Access the applications: <http://localhost:5000>
 To run the unit tests:
 
 ```bash
-python3 test_utils.py
-python3 test_video.py
+pytest tests/ -v
 ```
-
-You can also run this to run all tests available :
-    python -m pytest
-
-Or be more precise :
-    python -m pytest tests/test_app.py
