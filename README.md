@@ -38,4 +38,7 @@ python3 test_utils.py
 ```
 
 You can also run this to run all tests available :
-python -m pytest
+    python -m pytest
+
+Or be more precise :
+    python -m pytest tests/test_app.py
