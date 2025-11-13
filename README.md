@@ -36,3 +36,6 @@ To run the unit tests:
 ```bash
 python3 test_utils.py
 ```
+
+You can also run this to run all tests available :
+python -m pytest
