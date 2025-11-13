@@ -1,11 +1,7 @@
-import app
+"""Tests for video-related routes"""
 
-#Tests page /videos
+
 def test_videos_page(client):
-    """Test que la page d'accueil fonctionne"""
-    client = app.test_client()
-    response = client.get('/videos')
+    """Test that the videos page works correctly"""
+    response = client.get("/videos")
     assert response.status_code == 200
-
-
-

@@ -1,9 +1,8 @@
-import app
+"""Tests for Flask application routes"""
 
-#Tests page route /
+
 def test_home_page(client):
-    """Test que la page d'accueil fonctionne"""
-    client = app.test_client()
+    """Test that the home page works correctly"""
     response = client.get('/')
     assert response.status_code == 200
 
